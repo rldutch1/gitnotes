@@ -11,3 +11,7 @@ Push an existing repository from the command line
 git remote add origin https://github.com/username/reponame.git
 git push -u origin master
 
+Stuff to try:
+I had a difficult time pushing data to the git repo until I typed:
+git pull https://github.com/rlholland/gitnotes.git
+This merged the remote with my local. I was able to push afterward. 
