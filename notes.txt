@@ -15,3 +15,8 @@ Stuff to try:
 I had a difficult time pushing data to the git repo until I typed:
 git pull https://github.com/rlholland/gitnotes.git
 This merged the remote with my local. I was able to push afterward. 
+
+I have also deleted the remote repository after cloning it locally then
+creating a remote empty repository and pushing back to it by typing
+git push --set-upstream origin master
+
