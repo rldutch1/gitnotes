@@ -20,3 +20,27 @@ I have also deleted the remote repository after cloning it locally then
 creating a remote empty repository and pushing back to it by typing
 git push --set-upstream origin master
 
+If you want to make another version of your files just make a branch. 
+To create a new branch type: 
+	git branch newbranchname
+Git will automatically copy the master repo into your new branch.
+Change into the new branch by typing:
+
+	git checkout newbranchname
+
+You can make changes without disturbing the master
+files. If all goes well you can merge your changes into the master branch.
+
+To merge your new branch into master, first go to the master branch
+by typing: git checkout master
+
+ then type:
+
+	git merge branchname
+
+The master branch will now have the same changes as branchname
+
+If you want to delete the branch type:
+	git branch -D branchname
+
+
