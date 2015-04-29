@@ -43,4 +43,13 @@ The master branch will now have the same changes as branchname
 If you want to delete the branch type:
 	git branch -D branchname
 
+If you want to see all of the branches:
+	git branch -a
+
+If you want to see only the remote branches:
+	git branch -r
+
+If you want to see only local branches:
+	git branch
+
 
