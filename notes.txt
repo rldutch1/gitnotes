@@ -45,11 +45,15 @@ If you want to delete the branch type:
 
 If you want to see all of the branches:
 	git branch -a
+	git branch show-all <-- Doesn't seem to show all branches unless you have checked them out at some point.
 
 If you want to see only the remote branches:
 	git branch -r
 
 If you want to see only local branches:
 	git branch
+
+If you want to see the branches along with the latest commit message:
+	git branch -v
 
 
