@@ -14,14 +14,14 @@ git push -u origin master
 Stuff to try:
 I had a difficult time pushing data to the git repo until I typed:
 git pull https://github.com/rlholland/gitnotes.git
-This merged the remote with my local. I was able to push afterward. 
+This merged the remote with my local. I was able to push afterward.
 
 I have also deleted the remote repository after cloning it locally then
 creating a remote empty repository and pushing back to it by typing
 git push --set-upstream origin master
 
-If you want to make another version of your files just make a branch. 
-To create a new branch type: 
+If you want to make another version of your files just make a branch.
+To create a new branch type:
 	git branch newbranchname
 Git will automatically copy the master repo into your new branch.
 Change into the new branch by typing:
@@ -56,4 +56,9 @@ If you want to see only local branches:
 If you want to see the branches along with the latest commit message:
 	git branch -v
 
+If you want to commit a file and add a message:
+	commit --message="This is my message." "filename.txt"
+
+If you want to push all changes:
+	push --all "https://github.com/rlholland/reponame.git"
 
