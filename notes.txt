@@ -39,7 +39,7 @@ by typing: git checkout master
 
 The master branch will now have the same changes as branchname
 
-If you want to delete the branch type:
+If you want to delete the branch (make sure you are on the master branch) type:
 	git branch -D branchname
 
 If you want to see all of the branches:
@@ -55,9 +55,38 @@ If you want to see only local branches:
 If you want to see the branches along with the latest commit message:
 	git branch -v
 
+Comparing Branches
+	git diff master..newbranch
+		(The order doesn't matter. The diff above matches the one below)
+	git diff newbranch..master
+
+A different view for diff.
+	git diff --color-words newbranch..master
+
+If you want to compare two branches but not the latest commit of one branch (the previous commit).
+	git --color-words master..newbranch^
+
+How to find out if one branch has all of the commits of another branch.
+	git branch --merged (This will show a list of all of the branches that contain what is in your current branch. This will allow you to delete the other matching branches without causing any harm).
+
+Rename branches:
+	git -m or git --move
+	git -m oldbranchname newbranchname
+
 If you want to commit a file and add a message:
 	commit --message="This is my message." "filename.txt"
 
 If you want to push all changes:
 	push --all "https://github.com/rlholland/reponame.git"
+
+A good Git log command to show a lot of detail is:
+	git log --graph --oneline --decorate -all
+
+Configure the prompt to show the git branch when in a git repo:
+	export PS1='\W$(__git_ps1 "(%s)") > '
+	The \W will show the pwd information before the branch is displayed. When you are not in a git repo the pwd information will still show.
+
+	If you want to see the current prompt string "PS1" settings type "echo $PS1"
+
+
 
