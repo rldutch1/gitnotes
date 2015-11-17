@@ -55,6 +55,15 @@ If you want to see only local branches:
 If you want to see the branches along with the latest commit message:
 	git branch -v
 
+How to find out if one branch has all of the commits of another branch.
+	git branch --merged
+	(This will show a list of all of the branches that contain what is in your current branch. This will allow you to delete the other matching branches without causing any harm).
+
+Using fast-forward vs true merge
+	Example: If you make a new branch from master and make changes to the new branch without making any changes to master, then merge the new changes into master, you are doing a fast forward merge. No new commit will need to be made because you are just adding more or to "updating" master.
+
+	If you make a new branch and make changes to the new branch and also make changes to master and do a merge then you are doing a true merge and you will have to specify the differences that you want to keep and discard.
+
 Comparing Branches
 	git diff master..newbranch
 		(The order doesn't matter. The diff above matches the one below)
@@ -66,9 +75,6 @@ A different view for diff.
 If you want to compare two branches but not the latest commit of one branch (the previous commit).
 	git --color-words master..newbranch^
 
-How to find out if one branch has all of the commits of another branch.
-	git branch --merged (This will show a list of all of the branches that contain what is in your current branch. This will allow you to delete the other matching branches without causing any harm).
-
 Rename branches:
 	git -m or git --move
 	git -m oldbranchname newbranchname
@@ -76,11 +82,17 @@ Rename branches:
 If you want to commit a file and add a message:
 	commit --message="This is my message." "filename.txt"
 
+
+
 If you want to push all changes:
 	push --all "https://github.com/rlholland/reponame.git"
 
 A good Git log command to show a lot of detail is:
 	git log --graph --oneline --decorate -all
+
+If you want to see the log for a specific branch type:
+	git log specificbranch --oneline -3 (the -3 shows the latest 3 logs)
+
 
 Configure the prompt to show the git branch when in a git repo:
 	export PS1='\W$(__git_ps1 "(%s)") > '
