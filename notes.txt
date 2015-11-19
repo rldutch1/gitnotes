@@ -97,6 +97,16 @@ Stash/Stashing
 	To stash type:
 	git stash save "Message for stash."
 
+If you want to see a list of items in the stash type:
+	git stash list
+
+	You will see stash{0}, stash{1}, etc. It doesn't matter which branch you are on, you will still be able to see the stash and pull it out of the stash. This is helpful if you realize you are making changes to the wrong branch. Just stash the changes and checkout the branch you need to apply the changes to and apply the stash.
+
+	If you want to see a particular stash, you will have to reference it by its number. For example: If I wanted to see what was in stash{0} I would type:
+		git stash show stash@{0}
+	To see the stash in a more detailed way (diff), you will have to use the "Patch" option. Type:
+		git stash show -p stash@{0}
+
 If you want to commit a file and add a message:
 	commit --message="This is my message." "filename.txt"
 
