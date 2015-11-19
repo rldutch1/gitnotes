@@ -107,6 +107,17 @@ If you want to see a list of items in the stash type:
 	To see the stash in a more detailed way (diff), you will have to use the "Patch" option. Type:
 		git stash show -p stash@{0}
 
+To take the stash out of the stash repository you can use two commands,
+	git stash pop
+	git stash apply
+
+Delete single items that are in the stash type:
+	git stash drop stash{0}
+
+Delete all items in the stash by typing:
+	git stash clear
+
+	The difference is that git stash pop will remove the stash from the stash repository and git stash apply will leave a copy in the stash repository.
 If you want to commit a file and add a message:
 	commit --message="This is my message." "filename.txt"
 
