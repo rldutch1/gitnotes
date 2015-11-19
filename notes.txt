@@ -161,7 +161,7 @@ If you want to push all changes:
 	git push --all "https://github.com/rlholland/reponame.git"
 
 A good Git log command to show a lot of detail is:
-	git log --graph --oneline --decorate -all
+	git log --graph --oneline --decorate --all
 
 If you want to see the log for a specific branch type:
 	git log specificbranch --oneline -3 (the -3 shows the latest 3 logs)
@@ -210,4 +210,35 @@ Configure the prompt to show the git branch when in a git repo:
 	The \W will show the pwd information before the branch is displayed. When you are not in a git repo the pwd information will still show.
 
 	If you want to see the current prompt string "PS1" settings type "echo $PS1"
+
+Configuring Git Aliases
+You can create aliases for Git in the .gitconfig file two ways. You can edit the file directly or you can use the git config --global command.
+For example:
+I didn't want to type the entire log line below so I created a shortcut for it in the .gitconfig file by using the git config --global command.
+	git log --graph --oneline --decorate --all
+	I created an alias for it named "logg" by typing:
+	git config --global alias.gl "log --graph --oneline --decorate --all"
+	Now I only have to enter "git logg" to get the same output.
+
+Here are some more common Git aliases:
+	git config --global alias.co checkout
+	git config --global alias.co commit
+	git config --global alias.br branch
+	git config --global alias.dfs "diff --staged"
+	git config --global alias.gl "log --graph --oneline --decorate --all"
+
+List of Gui Interfaces for Git can be found on the Git Wiki:
+	https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools
+
+Git Hosting
+There are two ways to host. Use a hosting company or host yourself.
+
+	Popular Git hosting companies are:
+		http://github.com
+		http://bitbucket.org
+		http://gitorious.org
+
+	Self-Hosting:
+		Gitosis - http://github.com/tv42/gitosis (development for this stopped a few years ago)
+		Gitolite - http://github.com/sitaramc/gitolite
 
