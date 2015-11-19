@@ -166,6 +166,9 @@ A good Git log command to show a lot of detail is:
 If you want to see the log for a specific branch type:
 	git log specificbranch --oneline -3 (the -3 shows the latest 3 logs)
 
+If you want to see the log differences in patch mode type:
+	git log -p branchname..origin/branchname
+
 Git Fetch
 	This synchronizes any remote branches we don't have locally so when you type git branch it will show you all of the branches.
 
@@ -173,12 +176,6 @@ Git Fetch
 		git fetch origin
 		If you are tracking you don't need to type the "origin" just type:
 		git fetch
-
-Configure the prompt to show the git branch when in a git repo:
-	export PS1='\W$(__git_ps1 "(%s)") > '
-	The \W will show the pwd information before the branch is displayed. When you are not in a git repo the pwd information will still show.
-
-	If you want to see the current prompt string "PS1" settings type "echo $PS1"
 
 Three basic guidelines:
 	Always fetch before you work.
@@ -196,4 +193,21 @@ These commands will checkout the branch and track them.
 	git branch newbranchname anycommitSHA
 	git branch newbranchname origin/branchname
 
+To delete a remote branch use a colon.
+	git push origin :branchname
+
+	A little information history on the git push command. It used to be done like this: git push origin branchname:branchname. The colon between them means that you are telling git to push to origin the local branchname to the remote branchname. If you don't specify the colon and you only have one branchname, git assumes they are the same.
+
+	So the git push origin :branchname means to push to origin nothing locally to the remote branchname. The remote branchname is now getting nothing pushed to it and is deleted.
+
+	The new way to delete a branch is:
+		git push origin --delete branchname
+
+If you want to modify someones elses code that you find on GitHub, you will have to "Fork" it then make your changes. Once you are done with your changes, you can create a "Pull Request" so that the original owner can look at your code and decide to incorporate it into theirs.
+
+Configure the prompt to show the git branch when in a git repo:
+	export PS1='\W$(__git_ps1 "(%s)") > '
+	The \W will show the pwd information before the branch is displayed. When you are not in a git repo the pwd information will still show.
+
+	If you want to see the current prompt string "PS1" settings type "echo $PS1"
 
