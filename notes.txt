@@ -124,8 +124,41 @@ If you want to commit a file and add a message:
 If you want to see a particular commit type:
 	git show [SHA Key]
 
+If you want to see all of the branches on the remote type:
+	git remote
+	git remote -v (more verbose information)
+
+If you want to add a remote repository type:
+	git remote add <alias> <url>
+	Example: git remote add origin https://github.com/rlholland/reponame.git
+	You don't have to use the name "origin" you can change it if you want.
+
+If you want to remove a remote repository type:
+	git remote rm remoterepositoryname
+	Example: git remote rm origin
+
+If you want to look at the remote SHA you can type:
+	cat .git/refs/remotes/origin/master
+	This will show you the latest SHA on the remote
+
+If you want to see what branches git is tracking type:
+	cat .git/config
+	git push -u origin master (The -u tells git to track this branch)
+
+	If you have a branch that is not tracking you can add it to be tracked by typing:
+		git config branch.branchname.remote origin
+		or
+		git config branch.branchname.merge refs/heads/master
+		or
+		git branch --set-upstream branchname origin/branchname (The works with version 1.7 and later).
+
+If you want to clone a remote repository into a folder that you name type:
+	git clone https://github.com/rlholland/reponame.git newlocalfoldername
+	You can also clone a specific branch by using the -b option.
+	Example:
+
 If you want to push all changes:
-	push --all "https://github.com/rlholland/reponame.git"
+	git push --all "https://github.com/rlholland/reponame.git"
 
 A good Git log command to show a lot of detail is:
 	git log --graph --oneline --decorate -all
