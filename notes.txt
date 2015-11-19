@@ -166,6 +166,13 @@ A good Git log command to show a lot of detail is:
 If you want to see the log for a specific branch type:
 	git log specificbranch --oneline -3 (the -3 shows the latest 3 logs)
 
+Git Fetch
+	This synchronizes any remote branches we don't have locally so when you type git branch it will show you all of the branches.
+
+	If you want to fetch type:
+		git fetch origin
+		If you are tracking you don't need to type the "origin" just type:
+		git fetch
 
 Configure the prompt to show the git branch when in a git repo:
 	export PS1='\W$(__git_ps1 "(%s)") > '
@@ -173,5 +180,20 @@ Configure the prompt to show the git branch when in a git repo:
 
 	If you want to see the current prompt string "PS1" settings type "echo $PS1"
 
+Three basic guidelines:
+	Always fetch before you work.
+	Fetch before you push
+	Fetch often
+	You can also use "git pull"
+
+Git Pull
+	git pull does the same thing as git fetch except it automatically does the merge.
+	git pull = git fetch + git merge
+
+Checkout Remote Branches
+These commands will checkout the branch and track them.
+	git branch newbranchname HEAD
+	git branch newbranchname anycommitSHA
+	git branch newbranchname origin/branchname
 
 
