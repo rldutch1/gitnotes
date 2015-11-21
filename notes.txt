@@ -217,7 +217,7 @@ For example:
 I didn't want to type the entire log line below so I created a shortcut for it in the .gitconfig file by using the git config --global command.
 	git log --graph --oneline --decorate --all
 	I created an alias for it named "logg" by typing:
-	git config --global alias.gl "log --graph --oneline --decorate --all"
+	git config --global alias.logg "log --graph --oneline --decorate --all"
 	Now I only have to enter "git logg" to get the same output.
 
 Here are some more common Git aliases:
@@ -225,7 +225,7 @@ Here are some more common Git aliases:
 	git config --global alias.co commit
 	git config --global alias.br branch
 	git config --global alias.dfs "diff --staged"
-	git config --global alias.gl "log --graph --oneline --decorate --all"
+	git config --global alias.logg "log --graph --oneline --decorate --all"
 
 List of Gui Interfaces for Git can be found on the Git Wiki:
 	https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools
