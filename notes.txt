@@ -1,3 +1,10 @@
+Set username and email address:
+	git config --global user.name "Robert Holland"
+	git config --global user.email rob@robholland.com
+
+After updating my username and email address I had to reset the author by typing:
+	git commit --amend --reset-author
+
 Create a new repository on the command line
 touch README.md
 git init
