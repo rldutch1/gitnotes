@@ -1,4 +1,5 @@
 http://www.linux-magazine.com/Online/Features/Install-Your-Own-Git-Server
 http://studyhat.blogspot.com/2010/10/install-your-own-git-server-on-cent-os.html
 http://fedoracoreproject.blogspot.com/2010/02/how-to-install-vnc-server-on-fedora.html
-
+cie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way/
+GitHub Instructions - http://git-scm.com/book/ch4-7.html
