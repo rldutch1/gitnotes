@@ -1,3 +1,10 @@
+Set username and email address:
+	git config --global user.name "Robert Holland"
+	git config --global user.email rob@robholland.com
+
+After updating my username and email address I had to reset the author by typing:
+	git commit --amend --reset-author
+
 Create a new repository on the command line
 touch README.md
 git init
@@ -89,7 +96,7 @@ If you want to specify a merge tool to use when merging files you can do so by t
 	git mergetool --tool=NameOfMergeTool
 
 Process Tracking
-	Process tracking is when you merge the master branch into your working branch to update your working branch with new stuff from the master branch. This help you reduce the number of merge conflicts that occur when you finally have to merge your changes back into master.
+	Process tracking is when you merge the master branch into your working branch to update your working branch with new stuff from the master branch. This helps you reduce the number of merge conflicts that occur when you finally have to merge your changes back into master.
 
 Stash/Stashing
 	A stash is not a commit and they do not have a SHA associated with them. You use "stash" when you are in one branch then try to checkout another branch without first saving the changes for the branch you are in. You will get a message telling you that you will lose the changes that you have already made. You can save them by stashing them and then continue to checkout the other branch.
@@ -111,13 +118,14 @@ To take the stash out of the stash repository you can use two commands,
 	git stash pop
 	git stash apply
 
+	The difference is that git stash pop will remove the stash from the stash repository and git stash apply will leave a copy in the stash repository.
+
 Delete single items that are in the stash type:
 	git stash drop stash{0}
 
 Delete all items in the stash by typing:
 	git stash clear
 
-	The difference is that git stash pop will remove the stash from the stash repository and git stash apply will leave a copy in the stash repository.
 If you want to commit a file and add a message:
 	commit --message="This is my message." "filename.txt"
 
@@ -242,3 +250,5 @@ There are two ways to host. Use a hosting company or host yourself.
 		Gitosis - http://github.com/tv42/gitosis (development for this stopped a few years ago)
 		Gitolite - http://github.com/sitaramc/gitolite
 
+Merging Git Repositories:
+	http://blog.caplin.com/2013/09/18/merging-two-git-repositories/
