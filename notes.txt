@@ -333,6 +333,9 @@ To see the status or summary of the commits you can use:
     git log --summary
     git log --stat --summary
 
+To see a GPG signature:
+	git log --show-signature
+
 A good Git log command to show a lot of detail is:
 	git log --graph --oneline --decorate --all
 
