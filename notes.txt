@@ -67,7 +67,7 @@ I changed a file and saved it but I have not staged (git add) it yet. Git status
 
 git checkout -- filename
 
-This will replace the file that you changed with an original version before the change. If you only use git checkout filename (without the dashes), you may accidentally checkout a branch that has the same name as the file you are trying to restore (unlikely because branches dont have extensions). The double dashes -- tells git to stay in the current branch and look for the file you want to restore.
+This will replace the file that you changed with an original version before the change. If you only use git checkout filename (without the dashes), you may accidentally checkout a branch that has the same name as the file you are trying to restore (unlikely because branches don't have extensions). The double dashes -- tells git to stay in the current branch and look for the file you want to restore.
 
 If you want to make another version of your files just make a branch.
 To create a new branch type:
@@ -139,9 +139,12 @@ The -a option sends the commit directly to the repository skipping the staging a
 	git commit -am "Message"
 
 Amending Commits:
-You can only amend the last commit because it doesnt have any more commits after it. Once you have added another commit you cant amend a previous commit. If you need to change previous commit just make a new commit with the changes that you need.
+You can only amend the last commit because it doesn't have any more commits after it. Once you have added another commit you can't amend a previous commit. If you need to change previous commit just make a new commit with the changes that you need.
 I have already committed a file and then I make another change to the file and add it to the staging area. I want to commit the additional change into the previous commit:
-	git commit --amend -m Same message or different one.
+	git commit --amend -m "Same message or different one."
+
+Add a "Sign-off" to the commit type:
+	git commit -s 
 
 Can use the same command to change the commit message.
 You can amend a commit that is previous to the most recent commit. You will have to use git to checkout the commit using the SHA hash and then re-commit it with the new changes.
@@ -187,10 +190,10 @@ Global Ignore
 Put all of your git ignore commands in one file and point git to it using git config --global. The file can be named anything you want. You just have to tell git where it is.
     git config --global core.excludesfile path/to/filename (Ex: .ignore_global)
 
-Ignore files that have been previously tracked but you dont want to track them anymore. You can use the git rm command to delete the file from your directory and git will automatically remove it from being tracked by the repository. If you want to keep the file but remove it from being tracked you can use:
+Ignore files that have been previously tracked but you don't want to track them anymore. You can use the git rm command to delete the file from your directory and git will automatically remove it from being tracked by the repository. If you want to keep the file but remove it from being tracked you can use:
     git rm --cached filename
 
-This removes the file from being tracked by git. If you do a git status it will show as deleted but it really isnt. It is just no longer being tracked.
+This removes the file from being tracked by git. If you do a git status it will show as "deleted" but it really isn't. It is just no longer being tracked.
 
 Git does not track empty directories. If you want to track a directory you will have to put a file in it. Most commonly people put a file named .gitkeep inside the directory so that git will watch the directory.
 
@@ -326,7 +329,7 @@ You can show the log file by SHA:
 
 You can show the log on just one file from a certain point and view the changes.
     git log -p SHA.. index.html
-    git log -p --since=2014-04-01 index.html (The -p shows the differences)
+    git log -p --since="2014-04-01" index.html (The -p shows the differences)
 
 To see the status or summary of the commits you can use:
     git log --stat
