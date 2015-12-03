@@ -1,3 +1,10 @@
+Configuring git:
+For all users on the system:
+    git --config system
+
+For user level:
+    git --config global
+
 Set username and email address:
 	git config --global user.name "Robert Holland"
 	git config --global user.email rob@robholland.com
@@ -5,7 +12,35 @@ Set username and email address:
 After updating my username and email address I had to reset the author by typing:
 	git commit --amend --reset-author
 
-Create a new repository on the command line
+If you want to see what is already configured:
+	git config --list
+
+If you want to see the username or email address:
+	git config user.name
+	git config user.email
+
+To configure the preferred editor:
+	git config --global core.editor "EditorNameHere"
+	git config --global core.editor "mate -wl1" (wait for textmate to finish and put the cursor on line one).
+	git config --system color.ui true
+
+Exploring Git Auto-completion:
+Download git-completion.bash and rename it to .git-completion.bash.
+
+Download it from here:
+	curl -OL https://github.com/git/git/raw/master/contrib/completion/git-completion.bash
+
+Rename the file to .git-completion.bash
+    mv git-completion.bash .git-completion.bash
+
+Exploring Git Auto Completion:
+Enter this in the .bash_profile or equivalent:
+    #Git configuration file:
+		if [ -f ~/.git-completion.bash ]; then
+        source ~/.git-completion.bash
+		fi
+
+Create a new repository on the command line make a new directory then type:
 touch README.md
 git init
 git add README.md
@@ -25,6 +60,14 @@ This merged the remote with my local. I was able to push afterward.
 I have also deleted the remote repository after cloning it locally then
 creating a remote empty repository and pushing back to it by typing
 git push --set-upstream origin master
+
+Git checkout
+Undo changes to the git repository:
+I changed a file and saved it but I have not staged (git add) it yet. Git status show what was changed and I want to undo my changes. To replace the file in the local directory with a copy of what you have in the working area type:
+
+git checkout -- filename
+
+This will replace the file that you changed with an original version before the change. If you only use git checkout filename (without the dashes), you may accidentally checkout a branch that has the same name as the file you are trying to restore (unlikely because branches dont have extensions). The double dashes -- tells git to stay in the current branch and look for the file you want to restore.
 
 If you want to make another version of your files just make a branch.
 To create a new branch type:
@@ -71,6 +114,85 @@ If you want to see the branches along with the latest commit message:
 How to find out if one branch has all of the commits of another branch.
 	git branch --merged
 	(This will show a list of all of the branches that contain what is in your current branch. This will allow you to delete the other matching branches without causing any harm).
+
+Git diff
+To see all of the changes made to the files type:
+	git diff
+
+You can see a line by line difference between what is in the repository or staging area compared to what is in the working area. If you just want to see what is in a single file type:
+	git diff singlefilename
+
+If you have already staged a file and want to see the differences between that staged file and what you have in the repository then type:
+	git diff --staged
+
+Undo changes in the staging area:
+I have made a change to a file and it shows up as changed in the working area. I used git add filename to add the file to the staging area. Now I want to take the file out of the staging area and put it back in the working area.
+
+	git reset HEAD filename
+
+You will see an "M" next to the file that indicates that the staging area was modified.
+
+When you are in the diff view you can use the (minus sign + shift + S) to word wrap the long lines. Repeat the same key combination to undo the word wrap. Also you can see the changes side by side by typing:
+	git diff --color-words filename
+
+The -a option sends the commit directly to the repository skipping the staging area:
+	git commit -am "Message"
+
+Amending Commits:
+You can only amend the last commit because it doesnt have any more commits after it. Once you have added another commit you cant amend a previous commit. If you need to change previous commit just make a new commit with the changes that you need.
+I have already committed a file and then I make another change to the file and add it to the staging area. I want to commit the additional change into the previous commit:
+	git commit --amend -m Same message or different one.
+
+Can use the same command to change the commit message.
+You can amend a commit that is previous to the most recent commit. You will have to use git to checkout the commit using the SHA hash and then re-commit it with the new changes.
+	git checkout 2d2323d23423d -- filename
+
+This will put the file in the staging area and not the working area. When you checkout a file from the staging area it will go to the working area. (git diff --staged)
+
+Git Revert:
+Undo the changes made by a commit. It will take all of the changes and add everything that was deleted and delete everything that was added.
+	git revert SHA
+
+Git reset:
+Moves the HEAD pointer. Similar to making a recording on a tape then rewinding 10 seconds.
+
+Has 3 options.
+	git reset --soft sha
+Does not change the staging index or working directory. Only the repository is set back to an earlier version.
+	git reset --soft sha
+
+	git reset --mixed sha (default)
+Changes the staging index to match the repository.
+Does not change the working directory.
+--mixed is almost as safe as --soft.
+
+	git reset --hard sha
+	changes staging index and working directory to match the repository. (Rewinding 10 seconds and pressing record.) It removes every change that was made before the commit that you select.
+
+Git clean:
+Remove unwanted files from your git directory.
+    git clean -n (does a dry run)
+    git clean -f (permanently deletes the untracked files from your directory)
+
+Git Ignore
+Create a file in the root directory called .gitignore and place files and extensions in .gitignore that you want git to ignore.
+    Can use regular expressions: * ? [aeiou] [0-9]
+    Negate expressions with !
+        Example: !index.php tells git to not ignore index.php.
+    Ignore all files in a directory with a trailing slash.
+        DirectoryName/DirectoryName/
+    Comment with #
+
+Global Ignore
+Put all of your git ignore commands in one file and point git to it using git config --global. The file can be named anything you want. You just have to tell git where it is.
+    git config --global core.excludesfile path/to/filename (Ex: .ignore_global)
+
+Ignore files that have been previously tracked but you dont want to track them anymore. You can use the git rm command to delete the file from your directory and git will automatically remove it from being tracked by the repository. If you want to keep the file but remove it from being tracked you can use:
+    git rm --cached filename
+
+This removes the file from being tracked by git. If you do a git status it will show as deleted but it really isnt. It is just no longer being tracked.
+
+Git does not track empty directories. If you want to track a directory you will have to put a file in it. Most commonly people put a file named .gitkeep inside the directory so that git will watch the directory.
 
 Comparing Branches
 	git diff master..newbranch
@@ -167,6 +289,49 @@ If you want to clone a remote repository into a folder that you name type:
 
 If you want to push all changes:
 	git push --all "https://github.com/rlholland/reponame.git"
+
+Git log
+If you want to see the commits that were made to the git repo, type:
+	git log
+
+This will show you all of the commits and the messages that were entered when the commit was made. If you want to limit the display of message to a certain number then type:
+	git log -n 10
+
+This will limit the number of messages displayed on the screen to 10.
+
+If you want to see all of the commits from the beginning up to a certain date type:
+	git log --until=2014-05-25
+
+If you want to see all of the commits since a certain date to the present type:
+	git log --since=2014-05-25
+
+You can use both commands together to see commits between two dates.
+	git log --since="two weeks ago" --until="3 days ago"
+	git log --since="two.weeks" --until="3.days"
+
+You can see commits made by a specific person (author) by typing:
+	git log --author="Robert" (can use quotes if search term has a space).
+
+You can search the commit messages for an expression by using grep (Global Regular Expression). Type:
+	git log --grep="Text you are looking for" (this is case sensitive).
+
+You can ignore case with:
+	git log --grep="Text you are looking for" -i  (the dash "i" will ignore case).
+
+You can show the log file by SHA:
+    git log SHA1..SHA2
+    Example: git log 23fadf323..938533arad --oneline
+    The --oneline shows part of the SHA and the  commit on one line.
+    git log --format=oneline shows the complete SHA and message on one line.
+
+You can show the log on just one file from a certain point and view the changes.
+    git log -p SHA.. index.html
+    git log -p --since=2014-04-01 index.html (The -p shows the differences)
+
+To see the status or summary of the commits you can use:
+    git log --stat
+    git log --summary
+    git log --stat --summary
 
 A good Git log command to show a lot of detail is:
 	git log --graph --oneline --decorate --all
