@@ -144,7 +144,7 @@ I have already committed a file and then I make another change to the file and a
 	git commit --amend -m "Same message or different one."
 
 Add a "Sign-off" to the commit type:
-	git commit -s 
+	git commit -s
 
 Can use the same command to change the commit message.
 You can amend a commit that is previous to the most recent commit. You will have to use git to checkout the commit using the SHA hash and then re-commit it with the new changes.
@@ -176,6 +176,7 @@ Git clean:
 Remove unwanted files from your git directory.
     git clean -n (does a dry run)
     git clean -f (permanently deletes the untracked files from your directory)
+    (see below for git rm --cached filename) to remove untracked files from being seen.
 
 Git Ignore
 Create a file in the root directory called .gitignore and place files and extensions in .gitignore that you want git to ignore.
