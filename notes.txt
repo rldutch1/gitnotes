@@ -144,7 +144,7 @@ I have already committed a file and then I make another change to the file and a
 	git commit --amend -m "Same message or different one."
 
 Add a "Sign-off" to the commit type:
-	git commit -s
+	git commit -s -am "Message" <--(Uppercase S for GPG signed commits).
 
 Can use the same command to change the commit message.
 You can amend a commit that is previous to the most recent commit. You will have to use git to checkout the commit using the SHA hash and then re-commit it with the new changes.
