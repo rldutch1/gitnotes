@@ -145,8 +145,8 @@ I have already committed a file and then I make another change to the file and a
 	git commit --amend -m "Same message or different one."
 
 Add a "Sign-off" to the commit type:
-	
-	git commit -s -am "Message" 
+
+	git commit -s -am "Message"
 	git commit -S -am "Message" <--(Uppercase S for GPG signed commits).
 
 Can use the same command to change the commit message.
@@ -294,6 +294,9 @@ If you want to clone a remote repository into a folder that you name type:
 	You can also clone a specific branch by using the -b option.
 	Example:
 
+If you want to clone using SSH:
+	git clone ssh://username@servername/~/path/to/git/repo.git
+
 If you want to push all changes:
 	git push --all "https://github.com/rlholland/reponame.git"
 
@@ -419,6 +422,9 @@ Here are some more common Git aliases:
 	git config --global alias.dfs "diff --staged"
 	git config --global alias.logg "log --graph --oneline --decorate --all"
 
+Merging Git Repositories:
+	http://blog.caplin.com/2013/09/18/merging-two-git-repositories/
+
 List of Gui Interfaces for Git can be found on the Git Wiki:
 	https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools
 
@@ -434,5 +440,81 @@ There are two ways to host. Use a hosting company or host yourself.
 		Gitosis - http://github.com/tv42/gitosis (development for this stopped a few years ago)
 		Gitolite - http://github.com/sitaramc/gitolite
 
-Merging Git Repositories:
-	http://blog.caplin.com/2013/09/18/merging-two-git-repositories/
+	Michael's Git Tutorial - Setting Up a Git Server https://www.youtube.com/watch?v=SyMkLQLC3Kg
+	How to Setup a Git SSH Server and Client on Ubuntu https://www.youtube.com/watch?v=lXSZUuDW4nY
+	Creating a Git Server on a Windows OS https://www.youtube.com/watch?v=w3eRlEhzAZk&ebc=ANyPxKpNRpbhQZ_nlL7IxaYeM_5rOLOI2RPJi2kv1jJuw6DUEEe14nsBvDRHvBjQKmO7DIvaOUzprWUCtFUXdcO9X-cLOpYrHg
+
+Ubuntu Server Configuration:
+To find the Gateway: route -n
+On the server:
+	sudo vi /etc/network/interfaces (Set the eth0 interface to a static IP address)
+	auto lo
+	iface lo inet loopback
+	auto eth0
+	iface eth0 inet static
+	address 192.168.1.2
+	netmask 255.255.255.0
+	gateway 192.168.1.1
+
+From the client:
+	sudo vi /etc/hosts (enter the Git Server's information)
+sudo vi /etc/ssh/sshd_config (Configure SSH to accept access by SHA key instead of tunnelled clear text passwords)
+	#Find the line that says: PasswordAuthentication yes
+	#and change it to read: PasswordAuthentication no
+	#uncomment the line.
+
+sudo restart ssh
+
+sudo adduser git
+su git
+mkdir .ssh
+chmod 700 .ssh
+touch .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys (Make sure only the root user has access rights)
+
+Create a RSA key on the client and copy it to the server.
+	ssh-keygen (Create the key)
+	(Copy id_rsa.pub to the server)
+
+Install Git on the server:
+	sudo apt-get -y install git
+
+Change the git login to git operations only:
+	cat /etc/shells
+
+Find out which shell git is using:
+	which git-shell
+
+Copy the git-shell to the list of valid shells in the /etc/shells file.
+
+Change the git user login shell to git-shell:
+	sudo chsh git
+	Enter: /usr/bin/git-shell
+
+Create a git repository and a project:
+	mkdir -p /opt/git/project-name.git
+	cd /opt/git/project-name.git
+	git init --bare (--shared)
+
+Give the git user access to the project-name.git folder.
+	sudo chown -R git:git /opt/git
+
+On the client:
+	Configure the git username and email.
+	git config --global user.name "Joe Bob"
+	git config --global user.email "joebob@joebob.com"
+
+Create a local git repo called project-name
+Initialize the git repo
+	git init
+
+Add some files and commit them:
+	git add .
+	git commit -m "initial commit"
+
+Add your local repo to the server:
+	git remote add origin git@gitserver:/opt/git/project-name.git
+
+Push your files:
+	git push origin master
+
