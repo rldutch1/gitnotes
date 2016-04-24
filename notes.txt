@@ -472,9 +472,9 @@ chmod 700 .ssh
 touch .ssh/authorized_keys
 chmod 600 .ssh/authorized_keys (Make sure only the root user has access rights)
 
-Create a RSA key on the client and copy it to the server.
+Create an RSA key on the client and copy it to the server.
 	ssh-keygen (Create the key)
-	(Copy id_rsa.pub to the server)
+	(Copy id_rsa.pub to the server and import it into the Git authorized_keys file)
 
 Install Git on the server:
 	sudo apt-get -y install git
