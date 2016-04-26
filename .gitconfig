@@ -1,0 +1,7 @@
+[user]
+	name = Robert Holland
+	email = rob@robholland.com
+	signingkey = BD7ABB44
+[alias]
+	#logg = log --graph --oneline --decorate --all
+	logg = log --graph --show-signature --decorate --all
