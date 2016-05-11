@@ -295,7 +295,7 @@ If you want to clone a remote repository into a folder that you name type:
 	Example:
 
 If you want to clone using SSH:
-	git clone ssh://username@servername/~/path/to/git/repo.git
+	git clone ssh://username@servername/absolute/path/to/git/repo.git
 
 If you want to push all changes:
 	git push --all "https://github.com/rlholland/reponame.git"
