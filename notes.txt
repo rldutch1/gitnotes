@@ -491,18 +491,22 @@ Change the git user login shell to git-shell:
 	sudo chsh git
 	Enter: /usr/bin/git-shell
 
+Create a git repository:
+mkdir -p /opt/git
+Give the git user access to the git folder where the repositories will live. 
+Use with caution! This will overwrite group shared repositories if they already exist within the git repository.
+	sudo chown -R git:git /opt/git
+
 Create a git repository and a project:
 	mkdir -p /opt/git/project-name.git
 	cd /opt/git/project-name.git
 	git init --bare
 	git init --bare --shared (if the repository will be shared by a group)
+		Create a group for the Git repository.
 		Make sure the group has access to the repository: 
-			sudo chgrp thegroupname thereponame.git
+			sudo chgrp -R thegroupname thereponame.git (-R set the group ownership recursively).
 			sudo chmod g+rws thereponame.git (set the sticky bit so changes are owned by the group).
 			sudo chmod o-rwx thereponame.git (remove access for "other" so only group members can clone).
-
-Give the git user access to the project-name.git folder.
-	sudo chown -R git:git /opt/git
 
 On the client:
 	Configure the git username and email.
