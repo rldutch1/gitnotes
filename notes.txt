@@ -527,3 +527,12 @@ Add your local repo to the server:
 Push your files:
 	git push origin master
 
+If you want to change your repository to point to a different server and still keep the history.
+
+	Create the repository on the new server and clone the empty repository.
+	Copy the "Remote Origin" URL from .git/config file.
+	Move your original repository into the new cloned one.
+	Edit the .git/config file to point to the new repository.
+	git pull 
+	Add something and push to the new location.
+	git log should show the history.
