@@ -139,6 +139,10 @@ When you are in the diff view you can use the (minus sign + shift + S) to word w
 The -a option sends the commit directly to the repository skipping the staging area:
 	git commit -am "Message"
 
+You cannot use the "-am" option when committing modified files individually. This is used in situations where you have multiple files that have been modified but you only want to commit some of them. The "-a" will have to be left out and only use "-m". 
+Example:
+	git commit -m "Commit message" "File1.txt" "File2.txt"
+
 Amending Commits:
 You can only amend the last commit because it doesn't have any more commits after it. Once you have added another commit you can't amend a previous commit. If you need to change previous commit just make a new commit with the changes that you need.
 I have already committed a file and then I make another change to the file and add it to the staging area. I want to commit the additional change into the previous commit:
