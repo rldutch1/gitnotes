@@ -9,6 +9,13 @@ Set username and email address:
 	git config --global user.name "Robert Holland"
 	git config --global user.email rob@robholland.com
 
+Set the colors for git:
+	git config --global color.ui auto
+	git config --global color.ui true
+
+Set the pager for git diff:
+	git config --global core.pager 'less -R'
+
 After updating my username and email address I had to reset the author by typing:
 	git commit --amend --reset-author
 	(can use this to reset the author for the latest commit)
@@ -493,7 +500,7 @@ Change the git user login shell to git-shell:
 
 Create a git repository:
 mkdir -p /opt/git
-Give the git user access to the git folder where the repositories will live. 
+Give the git user access to the git folder where the repositories will live.
 Use with caution! This will overwrite group shared repositories if they already exist within the git repository.
 	sudo chown -R git:git /opt/git
 
@@ -503,7 +510,7 @@ Create a git repository and a project:
 	git init --bare
 	git init --bare --shared (if the repository will be shared by a group)
 		Create a group for the Git repository.
-		Make sure the group has access to the repository: 
+		Make sure the group has access to the repository:
 			sudo chgrp -R thegroupname thereponame.git (-R set the group ownership recursively).
 			sudo chmod g+rws thereponame.git (set the sticky bit so changes are owned by the group).
 			sudo chmod o-rwx thereponame.git (remove access for "other" so only group members can clone).
@@ -533,6 +540,6 @@ If you want to change your repository to point to a different server and still k
 	Copy the "Remote Origin" URL from .git/config file.
 	Move your original repository into the new cloned one.
 	Edit the .git/config file to point to the new repository.
-	git pull 
+	git pull
 	Add something and push to the new location.
 	git log should show the history.
