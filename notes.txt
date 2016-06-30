@@ -542,6 +542,18 @@ Add your local repo to the server:
 
 Push your files:
 	git push origin master
+	
+Push all branches:
+	git push origin '*:*'
+	git push origin --all
+	git push REMOTE '*:*'
+		git push REMOTE --all
+
+To automatically push all branches to their matching branch:
+	git config --global push.default matching
+	
+To only push the current branch to its matching branch:
+	git config --global push.default simple
 
 If you want to change your repository to point to a different server and still keep the history.
 
