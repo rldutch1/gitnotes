@@ -298,7 +298,7 @@ If you want to see what branches git is tracking type:
 		or
 		git config branch.branchname.merge refs/heads/master
 		or
-		git branch --set-upstream branchname origin/branchname (The works with version 1.7 and later).
+		git branch --set-upstream branchname origin/branchname (This works with version 1.7 and later).
 
 If you want to clone a remote repository into a folder that you name type:
 	git clone https://github.com/rlholland/reponame.git newlocalfoldername
@@ -369,7 +369,7 @@ If you want to see the log differences in patch mode type:
 If you only want to see the log entries for particurlar files type:
 	git log -- foo.txt bar.txt
 
-Its also possible to search for commits that introduce or remove a particular line of source code. This is called a pickaxe, and it takes the form of -S"<string>". For example, if you want to know when the string Hello, World! was added to any file in the project, you would use the following command:
+It's also possible to search for commits that introduce or remove a particular line of source code. This is called a pickaxe, and it takes the form of -S"<string>". For example, if you want to know when the string Hello, World! was added to any file in the project, you would use the following command:
 
 	git log -S"Hello, World!"
 
@@ -564,3 +564,4 @@ If you want to change your repository to point to a different server and still k
 	git pull
 	Add something and push to the new location.
 	git log should show the history.
+	(I think you can just change the Remote Origin in the .git/config file to point to the new repository).
