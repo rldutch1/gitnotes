@@ -103,6 +103,20 @@ To back out of a merge conflict type:
 	git merge --abort
 	This will leave your changes alone and not do the merge.
 
+To update a branch with the latest changes from master:
+You have two options:
+	The first is a merge, but this creates an extra commit for the merge.
+	Checkout each branch:
+		git checkout b1
+	Then merge:
+		git merge origin/master
+	Then push:
+		git push origin b1
+
+Alternatively, you can do a rebase:
+	git fetch
+	git rebase origin/master
+
 If you want to delete the branch (make sure you are on the master branch) type:
 	git branch -D branchname
 
