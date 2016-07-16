@@ -160,7 +160,7 @@ When you are in the diff view you can use the (minus sign + shift + S) to word w
 The -a option sends the commit directly to the repository skipping the staging area:
 	git commit -am "Message"
 
-You cannot use the "-am" option when committing modified files individually. This is used in situations where you have multiple files that have been modified but you only want to commit some of them. The "-a" will have to be left out and only use "-m". 
+You cannot use the "-am" option when committing modified files individually. This is used in situations where you have multiple files that have been modified but you only want to commit some of them. The "-a" will have to be left out and only use "-m".
 Example:
 	git commit -m "Commit message" "File1.txt" "File2.txt"
 
@@ -556,16 +556,16 @@ Add your local repo to the server:
 
 Push your files:
 	git push origin master
-	
+
 Push all branches:
 	git push origin '*:*'
 	git push origin --all
 	git push REMOTE '*:*'
-		git push REMOTE --all
+	git push REMOTE --all
 
 To automatically push all branches to their matching branch:
 	git config --global push.default matching
-	
+
 To only push the current branch to its matching branch:
 	git config --global push.default simple
 
