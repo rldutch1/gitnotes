@@ -7,3 +7,5 @@
 	logg = log --graph --show-signature --decorate --all
 	#logfiles = git diff-tree --no-commit-id --name-only -r thecommitSHA
 	logfiles = diff-tree --no-commit-id --name-only -r
+	#listallfiles = ls-tree --name-only -r thecommitSHA
+	listallfiles = ls-tree --name-only -r 
