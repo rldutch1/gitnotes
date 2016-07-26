@@ -5,3 +5,5 @@
 [alias]
 	#logg = log --graph --oneline --decorate --all
 	logg = log --graph --show-signature --decorate --all
+	#logfiles = git diff-tree --no-commit-id --name-only -r thecommitSHA
+	logfiles = diff-tree --no-commit-id --name-only -r
