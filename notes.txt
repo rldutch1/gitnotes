@@ -249,7 +249,7 @@ Using fast-forward vs true merge
 If you want to specify a merge tool to use when merging files you can do so by typing:
 	git mergetool --tool=NameOfMergeTool
 
-Process Tracking
+Process Tracking (rebase)
 	Process tracking is when you merge the master branch into your working branch to update your working branch with new stuff from the master branch. This helps you reduce the number of merge conflicts that occur when you finally have to merge your changes back into master.
 
 Stash/Stashing
