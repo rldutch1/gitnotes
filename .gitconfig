@@ -7,3 +7,5 @@
 	logg = log --graph --show-signature --decorate --all
 	listfiles = diff-tree --no-commit-id --name-only -r #thecommitSHA - List changed files in the commit.
 	listallfiles = ls-tree --name-only -r #thecommitSHA - List all files in the commit.
+	unstage = reset HEAD
+	
