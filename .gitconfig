@@ -8,4 +8,5 @@
 	listfiles = diff-tree --no-commit-id --name-only -r #thecommitSHA - List changed files in the commit.
 	listallfiles = ls-tree --name-only -r #thecommitSHA - List all files in the commit.
 	unstage = reset HEAD
+	#searchexpression = git rev-list --all|xargs git grep data_you_are_looking_for
 	
