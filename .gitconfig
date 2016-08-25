@@ -9,4 +9,6 @@
 	listallfiles = ls-tree --name-only -r #thecommitSHA - List all files in the commit.
 	unstage = reset HEAD
 	#searchexpression = git rev-list --all|xargs git grep data_you_are_looking_for
-	
+	this = !git init && git add . && git commit -m \"initial commit\"
+[push]
+	default = matching
