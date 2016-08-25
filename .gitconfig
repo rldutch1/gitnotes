@@ -8,12 +8,15 @@
 	listfiles = diff-tree --no-commit-id --name-only -r #thecommitSHA - List changed files in the commit.
 	listallfiles = ls-tree --name-only -r #thecommitSHA - List all files in the commit.
 	unstage = reset HEAD
-	#searchexpression = git rev-list --all|xargs git grep data_you_are_looking_for
 	this = !git init && git add . && git commit -m \"initial commit\"
-	search = !git rev-list --all|xargs git grep
+	search = !git rev-list --all|xargs git grep #data_you_are_looking_for
 	remove  = !git ls-files -z --deleted | xargs -0 git rm
 	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
 	ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat #List commits showing changed files
+	
 [push]
 	default = matching
 #http://blog.blindgaenger.net/advanced_git_aliases.html
+#http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
