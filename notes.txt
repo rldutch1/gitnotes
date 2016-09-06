@@ -147,6 +147,11 @@ You can see a line by line difference between what is in the repository or stagi
 If you have already staged a file and want to see the differences between that staged file and what you have in the repository then type:
 	git diff --staged
 
+Git blame:
+To see all the changes in a file over time type:
+	git blame -w filename
+The -w does not show differences in whitespace.
+	
 Undo changes in the staging area:
 I have made a change to a file and it shows up as changed in the working area. I used git add filename to add the file to the staging area. Now I want to take the file out of the staging area and put it back in the working area.
 
