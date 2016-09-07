@@ -151,6 +151,9 @@ Git blame:
 To see all the changes in a file over time type:
 	git blame -w filename
 The -w does not show differences in whitespace.
+
+To see the commits for only one file:
+	git log --follow filename
 	
 Undo changes in the staging area:
 I have made a change to a file and it shows up as changed in the working area. I used git add filename to add the file to the staging area. Now I want to take the file out of the staging area and put it back in the working area.
