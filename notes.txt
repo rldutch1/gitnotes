@@ -376,6 +376,17 @@ To see the status or summary of the commits you can use:
     git log --summary
     git log --stat --summary
 
+
+Git can search diffs with the -S option (it's called pickaxe in the docs)
+	http://stackoverflow.com/questions/4468361/search-all-of-git-history-for-a-string
+	
+git log -Spassword
+This will find any commit that added or removed the string password. Here a few options:
+
+	-p: will show the diffs. If you provide a file (-p file), it will generate a patch for you.
+	-G: looks for differences whose added or removed line matches the given regexp, as opposed to -S, which "looks for differences that introduce or remove an instance of string".
+	--all: searches over all branches and tags; alternatively, use --branches[=<pattern>] or --tags[=<pattern>]
+
 To see a GPG signature:
 	git log --show-signature
 
