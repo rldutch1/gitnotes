@@ -148,7 +148,7 @@ If you have already staged a file and want to see the differences between that s
 	git diff --staged
 
 Git blame:
-To see all the changes in a file over time type:
+To see all the changes line by line in a file and who made the change over time type:
 	git blame -w filename
 The -w does not show differences in whitespace.
 
