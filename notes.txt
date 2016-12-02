@@ -154,7 +154,7 @@ The -w does not show differences in whitespace.
 
 To see the commits for only one file:
 	git log --follow filename
-	
+
 Undo changes in the staging area:
 I have made a change to a file and it shows up as changed in the working area. I used git add filename to add the file to the staging area. Now I want to take the file out of the staging area and put it back in the working area.
 
@@ -180,6 +180,16 @@ I have already committed a file and then I make another change to the file and a
 Add a "Sign-off" to the commit type:
 
 	git commit -s -am "Message"
+
+To use GPG/PGP to sign a commit you must first configure GPG/PGP so that Git knows about it.
+	git config user.signingkey <HEX KEY ID>
+
+	or for global setting using the same key for every repository.
+
+	git config --global user.signingkey <HEX KEY ID>
+
+To GPG/PGP sign a commit type:
+
 	git commit -S -am "Message" <--(Uppercase S for GPG signed commits).
 
 Can use the same command to change the commit message.
@@ -379,9 +389,9 @@ To see the status or summary of the commits you can use:
 
 Git can search diffs with the -S option (it's called pickaxe in the docs)
 	http://stackoverflow.com/questions/4468361/search-all-of-git-history-for-a-string
-	
+
 git log -Spassword
-This will find any commit that added or removed the string password. Here a few options:
+This will find any commit that added or removed the string password. Here are a few options:
 
 	-p: will show the diffs. If you provide a file (-p file), it will generate a patch for you.
 	-G: looks for differences whose added or removed line matches the given regexp, as opposed to -S, which "looks for differences that introduce or remove an instance of string".
