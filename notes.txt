@@ -604,12 +604,8 @@ To only push the current branch to its matching branch:
 	git config --global push.default simple
 
 If you want to change your repository to point to a different server and still keep the history.
-
-	Create the repository on the new server and clone the empty repository.
-	Copy the "Remote Origin" URL from .git/config file.
-	Move your original repository into the new cloned one.
-	Edit the .git/config file to point to the new repository.
-	git pull
-	Add something and push to the new location.
-	git log should show the history.
-	(I think you can just change the Remote Origin in the .git/config file to point to the new repository).
+	Pull everything from your soon-to-be-old-server into your local repository.
+	Create the new repository on the new server.
+	In your local repository update the URL path to the new server (git remote set-url origin ...). See above for example.
+	"git push origin master" to the new location.
+	The Git log should still show the history and all of your data will be on the new server.
