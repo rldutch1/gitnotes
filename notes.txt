@@ -313,6 +313,11 @@ If you want to add a remote repository type:
 	Example: git remote add origin https://github.com/rlholland/reponame.git
 	You don't have to use the name "origin" you can change it if you want.
 
+If you want to update the URL in .git/config to point to a different repository:
+	git remote set-url <alias> <url>
+	Example:
+	git remote set-url origin B:/Millennium/mPage/gitrepositories/azb_custom_components.git
+
 If you want to remove a remote repository type:
 	git remote rm remoterepositoryname
 	Example: git remote rm origin
