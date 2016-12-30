@@ -474,6 +474,9 @@ I didn't want to type the entire log line below so I created a shortcut for it i
 	git config --global alias.logg "log --graph --oneline --decorate --all"
 	Now I only have to enter "git logg" to get the same output.
 
+Re-install Git icons on Windows
+	github --reinstall-shortcuts
+
 Here are some more common Git aliases:
 	git config --global alias.co checkout
 	git config --global alias.cm commit
@@ -609,3 +612,12 @@ If you want to change your repository to point to a different server and still k
 	In your local repository update the URL path to the new server (git remote set-url origin ...). See above for example.
 	"git push origin master" to the new location.
 	The Git log should still show the history and all of your data will be on the new server.
+
+I installed GitExtensions on my laptop and it would not push to a UNC path until I pointed it to GitHub Desktop.
+GitHub Desktop (Git Shell):
+C:\Users\rlholland\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin
+C:\Users\rlholland\AppData\Local\GitHub\GitHub.appref-ms --open-shell
+
+MINGW32 (Git Bash):
+C:\Program Files\Git\usr\bin
+"C:\Program Files\Git\git-bash.exe" --cd-to-home
