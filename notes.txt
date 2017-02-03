@@ -582,19 +582,25 @@ On the client:
 	git config --global user.name "Joe Bob"
 	git config --global user.email "joebob@joebob.com"
 
-Create a local git repo called project-name
-Initialize the git repo
+Create a local git repository called theprojectname
+	mkdir theprojectname
+	cd theprojectname
+
+Initialize the git repository
 	git init
 
 Add some files and commit them:
 	git add .
 	git commit -m "initial commit"
 
-Add your local repo to the server:
-	git remote add origin git@gitserver:/opt/git/project-name.git
+Link the server path to your local repository:
+	git remote add origin ssh://username@servername/opt/git/theprojectname.git
 
 Push your files:
 	git push origin master
+
+After the initial push you only need to type:
+	git push
 
 Push all branches:
 	git push origin '*:*'
