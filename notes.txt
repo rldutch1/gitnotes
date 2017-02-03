@@ -554,6 +554,8 @@ Find out which shell git is using:
 
 Copy the git-shell to the list of valid shells in the /etc/shells file.
 
+On Fedora 24 and 25, the chsh command may not exist. Install it: dnf install util-linux-user
+
 Change the git user login shell to git-shell:
 	sudo chsh git
 	Enter: /usr/bin/git-shell
