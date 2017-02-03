@@ -19,6 +19,7 @@
 	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
 	fileshow = log --follow
 	resetauthor = !git commit --amend --reset-author
+	logstat = !git log --stat --summary
 [push]
 	default = matching
 #http://blog.blindgaenger.net/advanced_git_aliases.html
