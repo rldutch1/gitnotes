@@ -571,8 +571,14 @@ Create a git repository and a project:
 	cd /opt/git/project-name.git
 	git init --bare
 	git init --bare --shared (if the repository will be shared by a group)
-		Create a group for the Git repository.
-		Make sure the group has access to the repository:
+
+If your repository is only going to be used by one user then you can just use the git user for simplicity.
+Change the owner of theprojectname.git to the git user and group.
+	sudo chown -R git:git /opt/git/theprojectname.git
+	sudo chmod o-rwx /opt/git/theprojectname.git (remove access to anyone else).
+
+If your repository will be used by multiple people, create a group for the Git repository.
+Make sure the group has access to the repository:
 			sudo chgrp -R thegroupname thereponame.git (-R set the group ownership recursively).
 			sudo chmod g+rws thereponame.git (set the sticky bit so changes are owned by the group).
 			sudo chmod o-rwx thereponame.git (remove access for "other" so only group members can clone).
@@ -582,18 +588,19 @@ On the client:
 	git config --global user.name "Joe Bob"
 	git config --global user.email "joebob@joebob.com"
 
-Create a local git repository called theprojectname
-	mkdir theprojectname
-	cd theprojectname
-
-Initialize the git repository
+Create a local git repo called project-name
+Initialize the git repo
 	git init
 
 Add some files and commit them:
 	git add .
 	git commit -m "initial commit"
 
-Link the server path to your local repository:
+Link your local repository to the server.
+If you are using the git user (before pushing commits see generating SSH keys below):
+	git remote add origin git@gitserver/opt/git/project-name.git
+
+If you are using your own username that is a member of the group that has access to theprojectname.git:
 	git remote add origin ssh://username@servername/opt/git/theprojectname.git
 
 Push your files:
@@ -613,6 +620,21 @@ To automatically push all branches to their matching branch:
 
 To only push the current branch to its matching branch:
 	git config --global push.default simple
+
+If you are using the git user you will need to generate a public and private SSH key for authentication (unless you know the password for the git user).
+To generate the SSH keys:
+If there is no .ssh directory in your home directory you will have to create one.
+	mkdir .ssh
+
+Change the permissions to 700.
+	chmod -R 700 .ssh
+
+	cd ~/.ssh
+	ssh-keygen -t rsa
+		-Accept the default name.
+		-You can enter a password if you like. If you do not, you can take advantage of automatic authentication using your public SSH key (id_rsa.pub) amd private SSH key (id_rsa) pair.
+
+Copy the contents of your public key to the git users authorized key file.
 
 If you want to change your repository to point to a different server and still keep the history.
 	Pull everything from your soon-to-be-old-server into your local repository.
