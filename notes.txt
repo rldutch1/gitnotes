@@ -117,6 +117,18 @@ Alternatively, you can do a rebase:
 	git fetch
 	git rebase origin/master
 
+If you want to change or revert the master branch to the previous commit:
+	Checkout previous commit on master
+		git checkout abc123...
+	Create branch for new master
+		git checkout -b new_master
+	Delete old master
+		git branch -D master
+	Make new_master master
+		git branch -mv new_master master
+	Alternatively you can reset current branch to one commit ago on master
+		git reset --hard abc123...
+
 If you want to delete the branch (make sure you are on the master branch) type:
 	git branch -D branchname
 
