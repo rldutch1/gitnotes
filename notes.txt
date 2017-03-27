@@ -120,7 +120,7 @@ Alternatively, you can do a rebase:
 If you want to change or revert the master branch to the previous commit:
 	Checkout previous commit on master
 		git checkout abc123...
-	Create branch for new master
+	While in the abc123... detached branch, create branch for new master
 		git checkout -b new_master
 	Delete old master
 		git branch -D master
