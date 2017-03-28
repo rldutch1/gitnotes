@@ -663,3 +663,42 @@ C:\Users\rlholland\AppData\Local\GitHub\GitHub.appref-ms --open-shell
 MINGW32 (Git Bash):
 C:\Program Files\Git\usr\bin
 "C:\Program Files\Git\git-bash.exe" --cd-to-home
+
+Making Git auto-commit:
+I'd like to use git to record all the changes to a file.
+
+Is there a way I can turn git 'commit' on to automatically happen every time a file is updated - so there is a new commit for every change to a file?
+
+Ideally I'd like my users to not even know that git is running behind the scenes. A user could then potentially "undo" changes to a file - and this could be achieved by pulling a previous version out of git.
+
+On Linux you could use inotifywait to automatically execute a command every time a file's content is changed.
+Edit: the following command commits file.txt as soon as it is saved:
+inotifywait -q -m -e CLOSE_WRITE --format="git commit -m 'autocommit on change' %w" file.txt | sh
+
+The earlier inotifywait answer is great, but it isn't quite a complete solution. As written, it is a one shot commit for a one time change in a file. It does not work for the common case where editing a file creates a new inode with the original name. inotifywait -m apparently follows files by inode, not by name. Also, after the file has changed, it is not staged for git commit without git add or git commit -a. Making some adjustments, here is what I am using on Debian to track all changes to my calendar file:
+
+/etc/rc.local:
+
+
+su -c /home/<username>/bin/gitwait -l <username>
+
+/home/<username>/bin/gitwait:
+#!/bin/bash
+#
+# gitwait - watch file and git commit all changes as they happen
+#
+
+while true; do
+
+  inotifywait -qq -e CLOSE_WRITE ~/.calendar/calendar
+
+  cd ~/.calendar; git commit -a -m 'autocommit on change'
+
+done
+This could be generalized to wait on a list of files and/or directories, and the corresponding inotifywait processes, and restart each inotifywait as a file is changed.
+
+Use the -r flag to inotifywait, but note that the kernel has a limit on the number of inotifywait watches it can set up. man inotifywait will tell you more.
+
+This Github repository was recommended: https://github.com/nevik/gitwatch.git. I have cloned it in my personal repository.
+Source: http://stackoverflow.com/questions/420143/making-git-auto-commit.
+
