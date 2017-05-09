@@ -702,3 +702,6 @@ Use the -r flag to inotifywait, but note that the kernel has a limit on the numb
 This Github repository was recommended: https://github.com/nevik/gitwatch.git. I have cloned it in my personal repository.
 Source: http://stackoverflow.com/questions/420143/making-git-auto-commit.
 
+The index.lock issue:
+	I was getting an error when made a commit. I can't remember what the error was but I had a choice to answer "Y" or "NO" to retry. I selected "N" and then was taken back to the command prompt. I looked on StackOverflow.com and saw a post that someone had submitted about creating the .git/index.lock file and trying the commit again and if it didn't work. Delete the index.lock file which seemed to work for the person that made the post. I tried it and it worked for me.
+
