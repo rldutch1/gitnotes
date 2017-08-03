@@ -703,5 +703,20 @@ This Github repository was recommended: https://github.com/nevik/gitwatch.git. I
 Source: http://stackoverflow.com/questions/420143/making-git-auto-commit.
 
 The index.lock issue:
-	I was getting an error when made a commit. I can't remember what the error was but I had a choice to answer "Y" or "NO" to retry. I selected "N" and then was taken back to the command prompt. I looked on StackOverflow.com and saw a post that someone had submitted about creating the .git/index.lock file and trying the commit again and if it didn't work. Delete the index.lock file which seemed to work for the person that made the post. I tried it and it worked for me.
+	I was getting an error when made a commit. I can't remember what the error was but I had a choice to answer "Y" or "N" to retry. I selected "N" and then was taken back to the command prompt. I looked on StackOverflow.com and saw a post that someone had submitted about creating the .git/index.lock file and trying the commit again and if it didn't work. Delete the index.lock file which seemed to work for the person that made the post. I tried it and it worked for me.
 
+Index.lock issue cannot write to index:
+While the prompt is still showing "Do you want to retry Y/N", open another command prompt and go into the .git directory and copy the index.lock file to index.lock.bak.
+
+	type index.lock > index.lock.bak
+	cat index.lock > index.lock.bak
+
+Go back to the original command prompt and type "N" to not retry. Go back to the other command prompt and copy index.lock.bak into index.
+
+	type index.lock.bak > index
+	cat index.lock.bak > index
+
+	del index.lock
+	rm index.lock
+
+Type git status/log to see the changes.
