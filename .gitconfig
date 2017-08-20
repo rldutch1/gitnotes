@@ -17,10 +17,29 @@
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat #List commits showing changed files
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative #showing relative dates
 	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
+	example = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
 	fileshow = log --follow #filename - Show all commit for particular file.
 	resetauthor = !git commit --amend --reset-author
 	logstat = !git log --stat --summary
 [push]
 	default = matching
+
+[example]
+	git = logg
+	git = listfiles commitSHA
+	git = listallfiles commitSHA
+	git = unstage
+	git = this
+	git = search DataYouAreLookingFor
+	git = remove
+	git = ignore filename
+	git = ls
+	git = ll
+	git = aliases
+	git = example
+	git = resetauthor
+	git = logstat
+	git = blame filename
+
 #http://blog.blindgaenger.net/advanced_git_aliases.html
 #http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
