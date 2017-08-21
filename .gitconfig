@@ -2,6 +2,18 @@
 	name = Robert Holland
 	email = rob@robholland.com
 	signingkey = BD7ABB44
+[core]
+	editor = vim
+	excludesfile = /Users/rob/.gitignore_global
+[color]
+	ui = true
+[push]
+	default = matching
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[filter "lfs"]
+	required = true
 [alias]
 	#logg = log --graph --oneline --decorate --all
 	logg = log --graph --show-signature --decorate --all
@@ -16,13 +28,16 @@
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat #List commits showing changed files
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative #showing relative dates
-	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
-	example = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
-	fileshow = log --follow #filename - Show all commit for particular file.
-	resetauthor = !git commit --amend --reset-author
+	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t -> \\2/' | sort
+	example = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\t -> \\2/' | sort
+	fileshow = log --follow #filename - Show all commits for particular file.
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
 	logstat = !git log --stat --summary
-[push]
-	default = matching
+	resetauthor = !git commit --amend --reset-author
+
+#http://blog.blindgaenger.net/advanced_git_aliases.html
+#http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 
 [example]
 	gi = logg
