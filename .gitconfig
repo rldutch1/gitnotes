@@ -25,21 +25,21 @@
 	default = matching
 
 [example]
-	git = logg
-	git = listfiles commitSHA
-	git = listallfiles commitSHA
-	git = unstage
-	git = this
-	git = search DataYouAreLookingFor
-	git = remove
-	git = ignore filename
-	git = ls
-	git = ll
-	git = aliases
-	git = example
-	git = resetauthor
-	git = logstat
-	git = blame filename
+	gi = logg
+	gi = listfiles commitSHA
+	gi = listallfiles commitSHA
+	gi = unstage
+	gi = this
+	gi = search DataYouAreLookingFor
+	gi = remove
+	gi = ignore filename
+	gi = ls
+	gi = ll
+	gi = aliases
+	gi = example
+	gi = resetauthor
+	gi = logstat
+	gi = blame filename
 
 #http://blog.blindgaenger.net/advanced_git_aliases.html
 #http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
