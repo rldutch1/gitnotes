@@ -28,8 +28,8 @@
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat #List commits showing changed files
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative #showing relative dates
-	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t -> \\2/' | sort
-	example = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\t -> \\2/' | sort
+	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t => \\2/' | sort
+	example = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\t => \\2/' | sort
 	fileshow = log --follow #filename - Show all commits for particular file.
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
