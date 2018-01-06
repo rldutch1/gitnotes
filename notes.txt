@@ -328,7 +328,7 @@ If you want to add a remote repository type:
 	You can clone a repository that you don't own and make changes to it then push your changes to your own repository.
 	Just use git remote add and create another path to your repository.
 	Example:
-		git remote add new-origin path-to-repository
+		git remote add new-origin path-to-new-repository
 		Now you can push-pull to the new-origin and also pull updates from the old origin that you don't own.
 
 If you want to change/update the URL in .git/config to point to a different repository:
