@@ -1,0 +1,78 @@
+[user]
+	name = Robert Holland
+	email = Robert.Holland@bannerhealth.com
+	signingkey = FD2E101C
+[gui]
+	commitmsgwidth = 99999999
+	recentrepo = C:/Users/rlholland/Desktop/GitHub/miscellaneous
+[push]
+	default = matching
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[merge]
+	diffstat = false
+	tool = BeyondCompare4
+[alias]
+	logg = log --graph --show-signature --decorate --all
+	listfiles = diff-tree --no-commit-id --name-only -r
+	listallfiles = ls-tree --name-only -r
+	unstage = reset HEAD
+	this = !git init && git add . && git commit -m \"initial commit\"
+	search = !git rev-list --all|xargs git grep
+	remove = !git ls-files -z --deleted | xargs -0 git rm
+	ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $2 >>.gitignore
+	ls = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate
+	ll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --numstat
+	ld = log --pretty=format:%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=relative
+	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t => \\2/' | sort
+	example = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\rgit \\2/' | sort
+	examples = !git config --list | grep 'example\\.' | sed 's/example\\.\\([^=]*\\)=\\(.*\\)/\\1\\rgit \\2/' | sort
+	filefollow = log --follow
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	logstat = !git log --stat --summary
+	resetauthor = !git commit --amend --reset-author
+	filelog = log -u
+	dlc = diff --cached HEAD^
+	grep = grep -Ii
+	filefind = !git ls-files |grep -i
+[example]
+	gi = logg
+	gi = listfiles commitSHA
+	gi = listallfiles commitSHA
+	gi = unstage
+	gi = this
+	gi = search DataYouAreLookingFor
+	gi = remove
+	gi = ignore filename
+	gi = ls
+	gi = ls -10
+	gi = ll
+	gi = ll -10
+	gi = aliases
+	gi = example
+	gi = resetauthor
+	gi = logstat
+	gi = blame filename
+	gi = filefollow filename
+	gi = filelog filename (Show the history of a file with diffs.)
+	gi = dlc number
+	gi = grep CaseSentitiveSearchTerm
+	gi = filefind filename
+	gi = git remote set-url <alias> <url>
+	gi = git remote add origin ssh://...
+	gi = git push -u origin repositoryname
+[diff]
+	guitool = kdiff3
+[core]
+	editor = \"C:/Program Files/GitExtensions/GitExtensions.exe\" fileeditor
+
+#http://blog.blindgaenger.net/advanced_git_aliases.html
+#http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
