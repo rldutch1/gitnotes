@@ -268,8 +268,9 @@ If you want to compare two branches but not the latest commit of one branch (the
 	git --color-words master..newbranch^
 
 Rename branches:
-	git -m or git --move
-	git -m oldbranchname newbranchname
+Switch to the branch that you want to rename.
+	git branch -m oldbranchname newbranchname
+	git branch --move oldbranchname newbranchname
 
 Using fast-forward vs true merge
 	Example: If you make a new branch from master and make changes to the new branch without making any changes to master, then merge the new changes into master, you are doing a fast forward merge. No new commit will need to be made because you are just adding more or to "updating" master.
@@ -354,6 +355,8 @@ If you want to see what branches git is tracking type:
 		git config branch.branchname.merge refs/heads/master
 		or
 		git branch --set-upstream branchname origin/branchname (This works with version 1.7 and later).
+		or
+		git branch --set-upstream-to=origin/<branch> master
 
 If you want to clone a remote repository into a folder that you name type:
 	git clone https://github.com/rlholland/reponame.git newlocalfoldername
@@ -468,7 +471,8 @@ These commands will checkout the branch and track them.
 To delete a remote branch use a colon.
 	git push origin :branchname
 
-	A little information history on the git push command. It used to be done like this: git push origin branchname:branchname. The colon between them means that you are telling git to push to origin the local branchname to the remote branchname. If you don't specify the colon and you only have one branchname, git assumes they are the same.
+	A little information history on the git push command. It used to be done like this:
+		git push origin branchname:branchname. The colon between them means that you are telling git to push to origin the local branchname to the remote branchname. If you don't specify the colon and you only have one branchname, git assumes they are the same.
 
 	So the git push origin :branchname means to push to origin nothing locally to the remote branchname. The remote branchname is now getting nothing pushed to it and is deleted.
 
