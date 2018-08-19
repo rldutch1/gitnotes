@@ -568,16 +568,17 @@ Another method using openssl:
 Send your "public" key to the server:
 	cat ~/.ssh/id_rsa.pub | ssh user@remote-server "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
-Install Git on the server:
+Install Git on the server (if it isn't install already):
 	sudo apt-get -y install git
 
-Change the git login to git operations only:
+Find out what shells are currently in use:
 	cat /etc/shells
 
 Find out which shell git is using:
 	which git-shell
 
 Copy the git-shell to the list of valid shells in the /etc/shells file.
+  The information from 'which git-shell' command.
 
 On Fedora 24 and 25, the chsh command may not exist. Install it: dnf install util-linux-user
 
@@ -603,6 +604,19 @@ Change the owner of theprojectname.git to the git user and group.
 	sudo chmod o-rwx /opt/git/theprojectname.git (remove access to anyone else).
 
 If your repository will be used by multiple people, create a group for the Git repository.
+To create a group:
+  sudo groupadd thegroupname
+  or
+  sudo addgroup thegroupname
+
+To add a user to the group:
+    sudo usermod -a -G thegroupname theusername
+    or
+    sudo useradd -G thegroupname theusername
+
+To remove a user from a group (Remove the user billybob from the group hillbilly):
+  gpasswd -d billybob hillbilly
+  
 Make sure the group has access to the repository:
 			sudo chgrp -R thegroupname thereponame.git (-R set the group ownership recursively).
 			sudo chmod g+rws thereponame.git (set the sticky bit so changes are owned by the group).
