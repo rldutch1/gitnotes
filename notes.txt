@@ -733,3 +733,7 @@ Go back to the original command prompt and type "N" to not retry. Go back to the
 	rm index.lock
 
 Type git status/log to see the changes.
+
+Websites: 
+	https://gist.github.com/hofmannsven/6814451 --> Someones Git notes I found on Github.
+
