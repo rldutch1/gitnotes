@@ -54,11 +54,11 @@ git init
 git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/username/reponame.git
-git push -u origin master
+git push -u origin master  //Only need to do this the first time you push to the server so that the upstream branch gets set.
 
 Push an existing repository from the command line
 git remote add origin https://github.com/username/reponame.git
-git push -u origin master
+git push -u origin master  //Only need to do this the first time you push to the server so that the upstream branch gets set.
 
 Stuff to try:
 I had a difficult time pushing data to the git repo until I typed:
@@ -337,6 +337,12 @@ If you want to change/update the URL in .git/config to point to a different repo
 	Example:
 	git remote set-url origin B:/Millennium/mPage/gitrepositories/azb_custom_components.git
 
+  This method defaults to SSH.
+  git remote set-url origin git@github.com:rlholland/remoterepositoryname.git
+
+  This method specifically uses SSH.
+  git remote add origin ssh://username@servername/path/to/repository.git
+
 If you want to remove a remote repository type:
 	git remote rm remoterepositoryname
 	Example: git remote rm origin
@@ -506,6 +512,19 @@ Here are some more common Git aliases:
 	git config --global alias.dfs "diff --staged"
 	git config --global alias.logg "log --graph --oneline --decorate --all"
 
+Git credentials:
+Immediately stop the credential manager on a Mac if you have your password stored/cached for a specific amount of time.
+  git credential-cache exit
+
+Remove your credentials from the OSX Keychain and configure for two-factor authentication:
+  git credential-osxkeychain erase
+    protocol=https
+    host=github.com (press enter twice to finish)
+  You now need to get a personal access token from Github.
+  (Log into Github: select "Security" and enable two-factor authentication.
+  Click on "Developer settings" then "Personal Access Token" and click the "Generate New Token" button.
+  Copy the token and paste it in when you are prompted for your password during a commit.)
+
 Merging Git Repositories:
 	http://blog.caplin.com/2013/09/18/merging-two-git-repositories/
 
@@ -527,6 +546,7 @@ There are two ways to host. Use a hosting company or host yourself.
 	Michael's Git Tutorial - Setting Up a Git Server https://www.youtube.com/watch?v=SyMkLQLC3Kg
 	How to Setup a Git SSH Server and Client on Ubuntu https://www.youtube.com/watch?v=lXSZUuDW4nY
 	Creating a Git Server on a Windows OS https://www.youtube.com/watch?v=w3eRlEhzAZk&ebc=ANyPxKpNRpbhQZ_nlL7IxaYeM_5rOLOI2RPJi2kv1jJuw6DUEEe14nsBvDRHvBjQKmO7DIvaOUzprWUCtFUXdcO9X-cLOpYrHg
+  Pushing to GitHub with HTTPS and 2-Factor authentication https://www.youtube.com/watch?v=hJLaXNMz8zw
 
 Ubuntu Server Configuration:
 To find the Gateway: route -n
@@ -616,7 +636,7 @@ To add a user to the group:
 
 To remove a user from a group (Remove the user billybob from the group hillbilly):
   gpasswd -d billybob hillbilly
-  
+
 Make sure the group has access to the repository:
 			sudo chgrp -R thegroupname thereponame.git (-R set the group ownership recursively).
 			sudo chmod g+rws thereponame.git (set the sticky bit so changes are owned by the group).
@@ -748,6 +768,5 @@ Go back to the original command prompt and type "N" to not retry. Go back to the
 
 Type git status/log to see the changes.
 
-Websites: 
+Websites:
 	https://gist.github.com/hofmannsven/6814451 --> Someones Git notes I found on Github.
-
