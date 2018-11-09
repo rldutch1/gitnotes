@@ -512,10 +512,12 @@ Here are some more common Git aliases:
 	git config --global alias.dfs "diff --staged"
 	git config --global alias.logg "log --graph --oneline --decorate --all"
 
+Setup Two-Factor Authentication:
 Git credentials:
 Immediately stop the credential manager on a Mac if you have your password stored/cached for a specific amount of time.
   git credential-cache exit
 
+On a MAC:
 Remove your credentials from the OSX Keychain and configure for two-factor authentication:
   git credential-osxkeychain erase
     protocol=https
@@ -524,6 +526,11 @@ Remove your credentials from the OSX Keychain and configure for two-factor authe
   (Log into Github: select "Security" and enable two-factor authentication.
   Click on "Developer settings" then "Personal Access Token" and click the "Generate New Token" button.
   Copy the token and paste it in when you are prompted for your password during a commit.)
+
+On Windows:
+	You have to install Github Desktop with has the two-factor authentication built in (Just sign in with your Github.com account). If you want to use the same two-factor from the command line, you will have to install "Git for Windows (https://git-scm.com/download/win)". Once that is installed, go to Github desktop and click the "Repository" dropdown and depending on which shell you have configured under "Options" --> "Advanced", either select "Open Git Command Prompt", "Open Git Powershell", or "Open Git in Bash".
+
+	Next, edit the .gitconfig file and enter the following so that
 
 Merging Git Repositories:
 	http://blog.caplin.com/2013/09/18/merging-two-git-repositories/
