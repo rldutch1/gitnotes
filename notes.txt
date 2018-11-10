@@ -518,10 +518,11 @@ Immediately stop the credential manager on a Mac if you have your password store
   git credential-cache exit
 
 On a MAC:
-Remove your credentials from the OSX Keychain and configure for two-factor authentication:
+To remove your credentials from the OSX Keychain and configure for two-factor authentication, type the following at the command prompt:
   git credential-osxkeychain erase
     protocol=https
     host=github.com (press enter twice to finish)
+
   You now need to get a personal access token from Github.
   (Log into Github: select "Security" and enable two-factor authentication.
   Click on "Developer settings" then "Personal Access Token" and click the "Generate New Token" button. If you use more than one computer, it is a good idea to include the name of your computer in the name of the token so that you can revoke it if necessary.
