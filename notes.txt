@@ -524,13 +524,22 @@ Remove your credentials from the OSX Keychain and configure for two-factor authe
     host=github.com (press enter twice to finish)
   You now need to get a personal access token from Github.
   (Log into Github: select "Security" and enable two-factor authentication.
-  Click on "Developer settings" then "Personal Access Token" and click the "Generate New Token" button.
+  Click on "Developer settings" then "Personal Access Token" and click the "Generate New Token" button. If you use more than one computer, it is a good idea to include the name of your computer in the name of the token so that you can revoke it if necessary.
+
   Copy the token and paste it in when you are prompted for your password during a commit.)
 
 On Windows:
-	You have to install Github Desktop with has the two-factor authentication built in (Just sign in with your Github.com account). If you want to use the same two-factor from the command line, you will have to install "Git for Windows (https://git-scm.com/download/win)". Once that is installed, go to Github desktop and click the "Repository" dropdown and depending on which shell you have configured under "Options" --> "Advanced", either select "Open Git Command Prompt", "Open Git Powershell", or "Open Git in Bash".
+	You have to install Github Desktop with has the two-factor authentication built in (just sign in with your Github.com account and that should get two-factor setup for the GUI part). If you want to use the same two-factor from the command line, you will have to install "Git for Windows (https://git-scm.com/download/win)". Once that is installed, go to Github desktop and click the "Repository" dropdown and depending on which shell you have configured under "Options" --> "Advanced", either select "Open Git Command Prompt", "Open Git Powershell", or "Open Git in Bash".
 
-	Next, edit the .gitconfig file and enter the following so that
+	Next, edit the .gitconfig file (located in the root of your profile directory and in your home folder if you are on a network with an automatically mapped home directory) and enter the following so that you can push from the command line using two-factor authentication.
+
+	[http]
+    sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+    sslbackend=schannel
+
+   (Check for the correct path if you are using 32bit Windows).
+
+   After the .gitconfig file has been modified and saved, do a push from your repository and you should not get prompted for a password. Your two-factor authentication is setup for your computer. If you lose your computer or misplace it, you can always log into Github and revoke your Personal Access Token for that computer.
 
 Merging Git Repositories:
 	http://blog.caplin.com/2013/09/18/merging-two-git-repositories/
