@@ -532,7 +532,11 @@ To remove your credentials from the OSX Keychain and configure for two-factor au
 On Windows:
 	You have to install Github Desktop with has the two-factor authentication built in (just sign in with your Github.com account and that should get two-factor setup for the GUI part). If you want to use the same two-factor from the command line, you will have to install "Git for Windows (https://git-scm.com/download/win)". Once that is installed, go to Github desktop and click the "Repository" dropdown and depending on which shell you have configured under "Options" --> "Advanced", either select "Open Git Command Prompt", "Open Git Powershell", or "Open Git in Bash".
 
-	Next, edit the .gitconfig file (located in the root of your profile directory and in your home folder if you are on a network with an automatically mapped home directory) and enter the following so that you can push from the command line using two-factor authentication.
+	(If you try to push without the correct configuration in the .gitconfig file, you may see a message similar to the one below:
+
+		fatal: unable to access 'https://github.com/rlholland/gitnotes.git/': SSL certificate problem: unable to get local issuer certificate)
+
+	Once you have your favorite command prompt open, edit the .gitconfig file (located in the root of your profile directory and/or in your home folder if you are on a network with an automatically mapped home directory) and enter the following so that you can push from the command line using two-factor authentication.
 
 	[http]
     sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
