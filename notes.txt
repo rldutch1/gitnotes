@@ -7,7 +7,7 @@ For user level:
 
 Set username and email address:
 	git config --global user.name "Robert Holland"
-	git config --global user.email rob@robholland.com
+	git config --global user.email rob@example.com
 
 Set the colors for git:
 	git config --global color.ui auto
