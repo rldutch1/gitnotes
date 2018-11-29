@@ -267,6 +267,9 @@ A different view for diff.
 If you want to compare two branches but not the latest commit of one branch (the previous commit).
 	git --color-words master..newbranch^
 
+If you want to compare a file from two separate branches.
+  git diff master~0 32a79a7~0 php/update_cal.php
+
 Rename branches:
 Switch to the branch that you want to rename.
 	git branch -m oldbranchname newbranchname
