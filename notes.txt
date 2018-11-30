@@ -257,7 +257,7 @@ This removes the file from being tracked by git. If you do a git status it will 
 Git does not track empty directories. If you want to track a directory you will have to put a file in it. Most commonly people put a file named .gitkeep inside the directory so that git will watch the directory.
 
 Comparing Branches
-	git diff master..newbranch
+	git diff master..newbranch <-- *The branch listed second is the "a" branch in the diff output.
 		(The order doesn't matter. The diff above matches the one below)
 	git diff newbranch..master
 
@@ -267,8 +267,11 @@ A different view for diff.
 If you want to compare two branches but not the latest commit of one branch (the previous commit).
 	git --color-words master..newbranch^
 
-If you want to compare a file from two separate branches.
+If you want to compare a file from the most recent commit on the master branch to the most recent commit on the 32a79a7 branch (the number 0 is the most recent commit of that branch, 1 would be the second most commit).
   git diff master~0 32a79a7~0 php/update_cal.php
+
+If you wanted to compare the same file between two different branches. *The branch listed second is the "a" branch in the diff output.
+  git diff master newtest -- testing.txt
 
 Rename branches:
 Switch to the branch that you want to rename.
