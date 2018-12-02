@@ -494,8 +494,20 @@ To delete a remote branch use a colon.
 If you want to modify someones elses code that you find on GitHub, you will have to "Fork" it then make your changes. Once you are done with your changes, you can create a "Pull Request" so that the original owner can look at your code and decide to incorporate it into theirs.
 
 Configure the prompt to show the git branch when in a git repo:
-	export PS1='\W$(__git_ps1 "(%s)") > '
+Edit the .bashrc file and enter below BEGIN:
+    # Git specific environment and startup programs
+        if [ -f ~/.git-prompt.sh ]; then
+              source ~/.git-prompt.sh
+        fi
+
+    #Git Prompt
+      PS1="[\u:\w]\$(__git_ps1)$ "  #<-- On Fedora Linux
+	    export PS1='\W$(__git_ps1 "(%s)") > '  #<-- On Mac OSX
+  Edit the .bashrc file and enter below END:
 	The \W will show the pwd information before the branch is displayed. When you are not in a git repo the pwd information will still show.
+
+  If the shell does not load the .git_prompt.sh file you may see the following error on the command line.
+  __git_ps1: command not found
 
 	If you want to see the current prompt string "PS1" settings type "echo $PS1"
 
