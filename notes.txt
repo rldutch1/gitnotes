@@ -617,17 +617,18 @@ sudo vi /etc/ssh/sshd_config (Configure SSH to accept access by SHA key instead 
 
 sudo restart ssh
 
+If you want to use the Git user:
 sudo adduser git
 su git
 mkdir .ssh
 chmod 700 .ssh
 touch .ssh/authorized_keys
-chmod 600 .ssh/authorized_keys (Make sure only the root user has access rights)
+chmod 600 .ssh/authorized_keys (Make sure only the owner has access rights)
 
 Create an RSA key on the client and copy it to the server.
 	ssh-keygen -t rsa
 	ssh-keygen -t rsa -b 4096
-	(See below to copy the public key to the server.)
+	(See below to copy the public key to the git user authorized_keys file on the server.) This method will allow ssh://git@servername/path/to/repo.git to be used for push pull operations.
 
 Another method using openssl:
 	openssl genrsa -out id_rsa 4096
