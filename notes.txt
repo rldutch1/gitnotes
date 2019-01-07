@@ -834,3 +834,5 @@ Example:
   cd reponame
   git instaweb --httpd=apache2
   git instaweb --httpd=apache2 --stop
+
+GitWeb source: https://git-scm.com/book/en/v2/Git-on-the-Server-GitWeb
