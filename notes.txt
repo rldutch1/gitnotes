@@ -836,3 +836,8 @@ Example:
   git instaweb --httpd=apache2 --stop
 
 GitWeb source: https://git-scm.com/book/en/v2/Git-on-the-Server-GitWeb
+
+Transferring repositories. 
+	I transferred 3 repositories and for some reason, when I got the confirmation link in my email in Chrome, the transfer link didn't work.
+	I had to open my email in Firefox and click on the confirmation link and the transfer worked.
+
