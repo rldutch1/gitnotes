@@ -1,5 +1,30 @@
+sudo EXTERNAL_URL="http://gitlab.example.com" dpkg -i gitlab-ee-9.5.2-ee.0_amd64.deb
+sudo EXTERNAL_URL="http://localhost" dpkg -i gitlab-ee-9.5.2-ee.0_amd64.deb
+
+Gitlab was unable to detect a valid hostname for your instance.
+Please configure a URL for your GitLab instance by setting 'external_url'
+configuration in /etc/gitlab/gitlab.rb file.
+
+Then, you can start your GitLab instance by running the following command:
+	sudo gitlab-ctl reconfigure
+	
+For a comprehensive list of configuration options please see the Omnibus GitLab readme
+https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md
+
+https://www.youtube.com/watch?v=tYog5kZugCw
+https://docs.gitlab.com/omnibus/settings/configuration.html
+https://www.linuxhelp.com/how-to-install-gitlab-10-5-7-on-ubuntu-18-04
+https://www.youtube.com/watch?v=3NoB-3k6AUA
+
+Virtual Host Examples:
+https://httpd.apache.org/docs/2.4/vhosts/examples.html
+
 Setup Gitlab Using Apache Instead of NGinx:
 https://kevingoedecke.me/2015/09/17/setup-gitlab-on-debian-7-with-existing-apache-webserver/
+service gitlab-runsvdir status
+service gitlab-runsvdir stop
+
+After Gitlab is installed, you can access the site at http://localhost if you do not have Apache already installed. Otherwise, you can access the site at http://localhost:8080.
 
 Troubleshooting:
 https://stackoverflow.com/questions/20591889/site-does-not-exist-error-for-a2ensite
