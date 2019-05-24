@@ -1,0 +1,45 @@
+Setup Gitlab Using Apache Instead of NGinx:
+https://kevingoedecke.me/2015/09/17/setup-gitlab-on-debian-7-with-existing-apache-webserver/
+
+Troubleshooting:
+https://stackoverflow.com/questions/20591889/site-does-not-exist-error-for-a2ensite
+
+root@gemini:/etc/apache2/sites-available# mv gitlab gitlab.conf
+root@gemini:/etc/apache2/sites-available# a2ensite gitlab
+Enabling site gitlab.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+root@gemini:/etc/apache2/sites-available# systemctl reload apache2
+Job for apache2.service failed because the control process exited with error code.
+See "systemctl status apache2.service" and "journalctl -xe" for details.
+root@gemini:/etc/apache2/sites-available# systemctl status apache2.service
+● apache2.service - The Apache HTTP Server
+   Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+  Drop-In: /lib/systemd/system/apache2.service.d
+           └─apache2-systemd.conf
+   Active: active (running) (Result: exit-code) since Thu 2019-05-23 17:24:34 MST; 15min ago
+  Process: 7238 ExecStop=/usr/sbin/apachectl stop (code=exited, status=0/SUCCESS)
+  Process: 22108 ExecReload=/usr/sbin/apachectl graceful (code=exited, status=1/FAILURE)
+  Process: 7243 ExecStart=/usr/sbin/apachectl start (code=exited, status=0/SUCCESS)
+ Main PID: 7247 (apache2)
+    Tasks: 7 (limit: 4915)
+   CGroup: /system.slice/apache2.service
+           ├─7247 /usr/sbin/apache2 -k start
+           ├─7248 /usr/sbin/apache2 -k start
+           ├─7249 /usr/sbin/apache2 -k start
+           ├─7250 /usr/sbin/apache2 -k start
+           ├─7251 /usr/sbin/apache2 -k start
+           ├─7252 /usr/sbin/apache2 -k start
+           └─7508 /usr/sbin/apache2 -k start
+
+May 23 17:24:34 gemini systemd[1]: Starting The Apache HTTP Server...
+May 23 17:24:34 gemini apachectl[7243]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this m
+May 23 17:24:34 gemini systemd[1]: Started The Apache HTTP Server.
+May 23 17:39:57 gemini systemd[1]: Reloading The Apache HTTP Server.
+May 23 17:39:57 gemini apachectl[22108]: AH00526: Syntax error on line 6 of /etc/apache2/sites-enabled/gitlab.conf:
+May 23 17:39:57 gemini apachectl[22108]: Invalid command 'ProxyPreserveHost', perhaps misspelled or defined by a module not included in the server configuration
+May 23 17:39:57 gemini apachectl[22108]: Action 'graceful' failed.
+May 23 17:39:57 gemini apachectl[22108]: The Apache error log may have more information.
+May 23 17:39:57 gemini systemd[1]: apache2.service: Control process exited, code=exited status=1
+May 23 17:39:57 gemini systemd[1]: Reload failed for The Apache HTTP Server.
+
