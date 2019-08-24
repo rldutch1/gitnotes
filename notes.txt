@@ -159,6 +159,14 @@ You can see a line by line difference between what is in the repository or stagi
 If you have already staged a file and want to see the differences between that staged file and what you have in the repository then type:
 	git diff --staged
 
+diff between two different commits in the same branch, you can put the SHA of the oldest commit first then the SHA of the latest commit last to see what is not in (or missing) from the first file.
+
+	git diff d861a745:/path/to/filename.txt 118192cf:/path/to/filename.txt
+
+diff between two different commits in the same branch, you can put the SHA of the latest commit first then the SHA of the older commit last to see what was added to the file.
+
+	git diff 118192cf:/path/to/filename.txt d861a745:/path/to/filename.txt
+
 Git blame:
 To see all the changes line by line in a file and who made the change over time type:
 	git blame -w filename
