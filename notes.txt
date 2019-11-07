@@ -128,7 +128,12 @@ If you want to change or revert the master branch to the previous commit:
 		git branch -mv new_master master
 	Alternatively you can reset current branch to one commit ago on master
 		git reset --hard abc123...
-
+	Then you will have to force push to the repository:
+		git push --force origin master
+	Try this if you get an error force pushing "error: denying non-fast forward refs/heads/master (you should pull first)" and you have access to the remote git server in ssh, you can go into the git remote directory and set:
+		git config receive.denyNonFastforwards false
+	If all fails or you don't have access to the remote repository, just make an update commit correcting the error.
+	
 If you want to delete the branch (make sure you are on the master branch) type:
 	git branch -D branchname
 
