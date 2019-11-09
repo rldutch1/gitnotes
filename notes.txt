@@ -206,7 +206,7 @@ Add a "Sign-off" to the commit type:
 
 	git commit -s -am "Message"
 
-To use GPG/PGP to sign a commit you must first configure GPG/PGP so that Git knows about it.
+To use GPG/PGP to sign a commit you must first configure Git with your GPG/PGP key so that it can be used.
 	git config user.signingkey <HEX KEY ID>
 
 	or for global setting using the same key for every repository.
