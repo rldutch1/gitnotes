@@ -135,6 +135,8 @@ If you want to change or revert the master branch to the previous commit:
 	If all fails or you don't have access to the remote repository, just make an update commit correcting the error.
 	
 Git Reflog
+Reflog is a record of ALL commits that are or were referenced in your repo at any time. That is why "git reflog" (a local recording which is pruned after 90 days by default) is used when you do a "destructive" operation (like deleting a branch), in order to get back the SHA1 that was referenced by that branch. The general advice when "git log" doesn't show you what you are looking for, use "git reflog". The "git reflog" command is a safety net.
+
 What's the difference between "git log" and "git reflog"?
 git log shows the current HEAD and its ancestry. That is, it prints the commit HEAD points to, then its parent, its parent, and so on. It traverses back through the repo's ancestry, by recursively looking up each commit's parent.
 
