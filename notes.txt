@@ -1,6 +1,6 @@
 Configuring git:
 For all users on the system:
-    git --config system
+	git --config system
 
 For user level:
     git --config global
@@ -134,6 +134,32 @@ If you want to change or revert the master branch to the previous commit:
 		git config receive.denyNonFastforwards false
 	If all fails or you don't have access to the remote repository, just make an update commit correcting the error.
 	
+Git Reflog
+What's the difference between "git log" and "git reflog"?
+git log shows the current HEAD and its ancestry. That is, it prints the commit HEAD points to, then its parent, its parent, and so on. It traverses back through the repo's ancestry, by recursively looking up each commit's parent.
+
+(In practice, some commits have more than one parent. To see a more representative log, use a command like git log --oneline --graph --decorate.)
+
+git reflog doesn't traverse HEAD's ancestry at all. The reflog is an ordered list of the commits that HEAD has pointed to: it's undo history for your repo. The reflog isn't part of the repo itself (it's stored separately to the commits themselves) and isn't included in pushes, fetches or clones; it's purely local.
+
+Aside: understanding the reflog means you can't really lose data from your repo once it's been committed. If you accidentally reset to an older commit, or rebase wrongly, or any other operation that visually "removes" commits, you can use the reflog to see where you were before and git reset --hard back to that ref to restore your previous state. Remember, refs imply not just the commit but the entire history behind it.
+
+A word of caution: you sometimes CAN lose data because reflog entries do not persist eternally - they are purged upon certain conditions. See this answer and the docs for git-reflog and git-gc. Generally, if the destructive operation was not more than 2 weeks ago, you most probably are safe.
+(https://stackoverflow.com/questions/17857723/whats-the-difference-between-git-reflog-and-log).
+
+*This only works in the folder/repo where the problem was created (purely local).
+
+Explanation:
+I was in the RHO custom-comonents repository and created a folder that I wanted to used for my development called robdev and I created a robdev.js file inside of it. I ran, my "git this" function to make the robdev folder a repository but "git this" accidentally included all files and committed them to the repository. Normally, you can have a repository within a repository but with the stand-alone version of git, it will read up to the parent tree and include everything below it, including sub-repositories.
+
+I didn't want this new commit because it contained a bunch of unnecessary uncommitted files and I checked out the previous commit and made it master (new_master/master) then force pushed the changes to the remote repository.
+
+I realized that when I checked out the previous commit, it didn't have all of the uncommitted files in it and I lost those when I made it the new_master/master. I had to find the "git this" commit which didn't exist the git log. Fortunately, there is a command called, "git reflog" which showed the commit that was created by "git this". The commit was at "HEAD@{7}" and I was able to restore it by typing:
+
+	"git reset --hard HEAD@{7}".
+
+*I tried cloning the remote repository where the changes were force pushed but the changes were not there in the "git reflog" display. I could only find the reflog changes in the original folder where the problem was created.
+
 If you want to delete the branch (make sure you are on the master branch) type:
 	git branch -D branchname
 
@@ -325,7 +351,7 @@ To take the stash out of the stash repository you can use two commands,
 	The difference is that git stash pop will remove the stash from the stash repository and git stash apply will leave a copy in the stash repository.
 
 Delete single items that are in the stash type:
-	git stash drop stash{0}
+	git stash drop 0
 
 Delete all items in the stash by typing:
 	git stash clear
