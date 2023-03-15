@@ -74,7 +74,10 @@ Undo changes to the git repository:
 I changed a file and saved it but I have not staged (git add) it yet. Git status show what was changed and I want to undo my changes. To replace the file in the local directory with a copy of what you have in the working area type:
 
 git checkout -- filename
-
+	or
+Checkout multiple files:
+	git checkout -- filename*
+	
 This will replace the file that you changed with an original version before the change. If you only use git checkout filename (without the dashes), you may accidentally checkout a branch that has the same name as the file you are trying to restore (unlikely because branches don't have extensions). The double dashes -- tells git to stay in the current branch and look for the file you want to restore.
 
 If you want to make another version of your files just make a branch.
